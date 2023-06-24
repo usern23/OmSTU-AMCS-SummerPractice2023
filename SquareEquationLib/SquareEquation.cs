@@ -1,5 +1,4 @@
 namespace SquareEquationLib;
-
 public class SquareEquation
 {
     public static double[] Solve(double a, double b, double c)
@@ -11,7 +10,7 @@ public class SquareEquation
         }
         b = b / a;
         c = c / a;
-        double d = b * b - 4 * c;
+        double d = Math.Pow(b,2) - 4 * c;
         double[] zeroRoots = new double[] { };
         if (d <= -eps) return zeroRoots;
         else if (-eps < d && d < eps)
@@ -27,6 +26,5 @@ public class SquareEquation
             twoRoots[1] = c / twoRoots[0];
             return twoRoots;
         }
-
     }
 }
