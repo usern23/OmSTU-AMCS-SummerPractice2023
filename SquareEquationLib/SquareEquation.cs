@@ -1,33 +1,32 @@
-﻿namespace SquareEquationLib;
+namespace SquareEquationLib;
 
-using System;
 public class SquareEquation
 {
     public static double[] Solve(double a, double b, double c)
     {
-        if (a == 0  new[] { a, b, c }.Any(double.IsNaN)  new[] { a, b, c }.Any(double.IsInfinity))
+        double eps = 1e-9;
+        if (-eps < a && a < eps || new[] { a, b, c }.Any(double.IsNaN) || new[] { a, b, c }.Any(double.IsInfinity))
         {
-            throw new ArgumentException("smth went wrong :/");
+            throw new ArgumentException();
         }
-        double x1;
-        double x2;
-        double[] nums = new double[2];
-        double d = b * b - 4 * a * c;
-        if (d == 0)
-        {
-             x1 = -b / (2 * a);
-             nums = new double[] { x1 };
+        b = b / a;
+        c = c / a;
+        double d = b * b - 4 * c;
+        double[] zeroRoots = new double[] { };
+        if (d <= -eps) return zeroRoots;
+        else if (-eps < d && d < eps)
+        { 
+            double[] oneRoots = new double[1];
+            oneRoots[0] = -(b) / 2;
+            return oneRoots;
         }
         else
         {
-             x1 = -(b + Math.Sign(b) + Math.Sqrt(d)) / 2;
-             x2 = c / x1;
-             nums = new double[] { x1, x2 };
+            double[] twoRoots = new double[2];
+            twoRoots[0] = -(b + Math.Sign(b) * Math.Sqrt(d)) / 2;
+            twoRoots[1] = c / twoRoots[0];
+            return twoRoots;
         }
-        if (d < 0)
-        {
-            nums = new double[0];
-        }
-        return nums;
+
     }
 }
