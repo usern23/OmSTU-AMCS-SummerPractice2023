@@ -13,7 +13,7 @@ public class SquareEquation
         double d = Math.Pow(b,2) - 4 * c;
         double[] zeroRoots = new double[] { };
         if (d <= -eps) return zeroRoots;
-        else if (-eps < d && d < eps)
+        else if (-eps < d & d < eps)
         { 
             double[] oneRoots = new double[1];
             oneRoots[0] = -(b) / 2;
