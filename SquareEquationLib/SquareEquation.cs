@@ -3,7 +3,7 @@ public class SquareEquation
 {
     public static double[] Solve(double a, double b, double c)
     {
-        double eps = 1e-9;
+        double eps = Math.Pow(10,-9);
         if (-eps < a && a < eps || new[] { a, b, c }.Any(double.IsNaN) || new[] { a, b, c }.Any(double.IsInfinity))
         {
             throw new ArgumentException();
