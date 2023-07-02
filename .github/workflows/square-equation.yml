@@ -2,7 +2,7 @@ name: square equation test
 
 on:
   push:
-    branches: ["XUNIT"]
+    branches: ["bdd"]
 
 jobs:
   build:
@@ -22,5 +22,8 @@ jobs:
       - name: Build
         run: dotnet build SquareEquationLib/ --no-restore /p:ContinuousIntegrationBuild=true
 
-      - name: Unittest and coverage
-        run: dotnet test /p:CoverletOutputFormat=cobertura /p:CollectCoverage=true /p:ThresholdType=line /p:Threshold=100
+      - name: BuildBDDTest
+        run: dotnet build XUnit.Coverage.sln
+
+      - name: BDDtest
+        run: dotnet test /p:CollectCoverage=true
