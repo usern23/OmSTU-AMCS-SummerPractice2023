@@ -26,4 +26,4 @@ jobs:
         run: dotnet build XUnit.Coverage.sln
 
       - name: BDDtest
-        run: dotnet test /p:CollectCoverage=true
+        run: cd BDD.Test && dotnet test /p:CollectCoverage=true
