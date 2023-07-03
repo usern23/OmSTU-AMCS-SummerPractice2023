@@ -19,4 +19,25 @@ public class Spacebattle
         else throw new System.Exception();
         return result; 
     }
+    public static double Fuel(double fuel_volume, double fuel_consumption)
+    {
+        if((fuel_volume - fuel_consumption) > 0)
+        {
+            return (fuel_volume - fuel_consumption);
+        }
+        else
+        {
+            throw new System.Exception();
+        }
+    }
+    public static double? Angle(double? ox, double? angular_velocity)
+    {
+        if (ox is not null & angular_velocity is not null )
+            {
+                return ox + angular_velocity;
+            }
+
+            else{
+                throw new Exception("Enter angle or angle speed");}
+    }
 }
